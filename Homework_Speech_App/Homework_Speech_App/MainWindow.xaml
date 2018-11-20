@@ -1,0 +1,82 @@
+﻿<Window x:Class="Homework_Speech_App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="语音演示程序" Height="400" Width="600">
+    <Window.Resources>
+        <Style TargetType="GroupBox">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="5 10"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+        <Style TargetType="StackPanel">
+            <Setter Property="Margin" Value="0 5"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="MinWidth" Value="40"/>
+            <Setter Property="Margin" Value="10 5 0 5"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="语音识别" Grid.Column="0" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="filePath_TB" Grid.Row="0" Grid.Column="0" Margin="0 5"/>
+                <Button x:Name="selectFile_Btn" Grid.Row="0" Grid.Column="1" Content="选择文件"
+                        Click="SelectFile_Btn_Click"/>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="音频格式：" Grid.Column="0" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                    <ComboBox x:Name="audioFormat_CB" Grid.Column="1"/>
+                </Grid>
+                <Button x:Name="startRecognition_Btn" Grid.Row="1" Grid.Column="1" Content="开始识别"
+                        Click="StartRecognition_Btn_Click"/>
+                <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" x:Name="RecognitionResultsTitle_TB" Text="识别结果" Margin="0 5"/>
+                    <RichTextBox Grid.Row="1"  x:Name="RecognitionResults_RTB" />
+                </Grid>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="语音合成"  Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <RichTextBox Grid.Row="0" x:Name="TextToSynthesis_Rtb" Margin="0 5" />
+                <Button x:Name="startSynthesis_Btn" Grid.Row="1" Grid.Column="1" Content="开始合成"
+                        Click="StartSynthesis_Btn_Click"/>
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</Window>
